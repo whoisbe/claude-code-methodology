@@ -2,6 +2,65 @@
 
 The single architectural choice that has shaped every project I have built with Claude over the last eight months is the separation between a macro context and a micro context. This document is the mechanical version — when to use which, what artifacts pass between them, and how to keep them honest. The autobiographical version of how I arrived at this — and what it cost me before I did — is in the Week 2 essay at [bharathk.dev](https://bharathk.dev).
 
+## The flow at a glance
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor You as You
+    participant Chat as Macro Context<br/>(Claude Chat)
+    participant Files as Handoff Artifacts<br/>(markdown files)
+    participant Code as Micro Context<br/>(Claude Code)
+    participant Skills as Skills Library<br/>(~/.claude/skills/)
+
+    Note over You,Skills: Project Bootstrap
+
+    You->>Chat: Kickoff prompt<br/>(vivid frame, constraint, primitive)
+    Chat-->>You: Brainstorm + clarifying questions
+    You->>Chat: Refinements
+    Chat->>Files: Initial ADRs<br/>(architecture, storage, runtime)
+    Chat->>Files: Sprint 1 plan<br/>(scope, exclusions)
+
+    Note over You,Skills: Sprint Loop (repeats N times)
+
+    Files->>Code: Sprint plan + relevant ADRs
+    You->>Code: Open session, point at scope
+    Skills-->>Code: Invoked when triggers fire<br/>(read at session start)
+    Code->>Code: Implement, test, debug
+
+    opt Code surfaces an architectural question
+        Code->>Files: Note the open question
+        Files->>Chat: Question routed up
+        Chat-->>You: Discuss, decide
+        Chat->>Files: New or updated ADR
+        Files->>Code: Updated ADR<br/>(resume sprint)
+    end
+
+    opt A repeated workflow earns extraction (3rd repetition rule)
+        alt Skill scope is clear
+            You->>Code: "Make this a skill"
+            Code->>Skills: New SKILL.md + supporting files
+        else Skill needs design first
+            You->>Chat: "Help me scope this skill"
+            Chat-->>You: Trigger condition, boundaries, failure modes
+            Chat->>Files: Skill-creation prompt
+            Files->>Code: Skill-creation prompt
+            Code->>Skills: New SKILL.md + supporting files
+        end
+    end
+
+    Code->>Files: sprint-output.md<br/>(what was built, decisions made, open items)
+    You->>Code: Clear context
+
+    Files->>Chat: sprint-output.md uploaded
+    Chat-->>You: Re-anchor, plan next sprint
+    Chat->>Files: Sprint N+1 plan<br/>(+ any new ADRs)
+
+    Note over You,Skills: Loop continues until project ships<br/>(or gets honestly killed)
+```
+
+The rest of this document walks through what each piece of the flow actually means.
+
 ## The two contexts
 
 **Macro context lives in Claude Chat.** It is where I think out loud about the project as a whole. Requirements get discovered here. Architecture gets argued out here. ADRs get drafted here. The macro context is long-lived — sometimes weeks — and it accumulates a coherent understanding of *why* the project is shaped the way it is. The currency of the macro context is reasoning.
