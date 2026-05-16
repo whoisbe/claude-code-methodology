@@ -11,6 +11,8 @@ I do not try to design skills up front. They emerge. The two signals I watch for
 
 If I am not sure yet, I leave the instructions inline until the third repetition. Premature skillification is its own tax — a skill that does not yet know its own boundaries tends to get rewritten more often than the inline version it replaced.
 
+Anthropic also ships a `skill-creator` skill that handles the scaffolding when you're ready to extract one — it's worth using rather than hand-rolling the directory and frontmatter yourself.
+
 ## How skills live and get invoked
 
 Skills live in `~/.claude/skills/` on my machine. Each skill is a directory; the entry point is a `SKILL.md` file with frontmatter declaring the skill's name and a short description of when it should fire. Claude Code reads the available skills at session start and decides when to invoke one based on the description. The description is the most important field — it is the only thing the model sees when deciding whether the skill applies.

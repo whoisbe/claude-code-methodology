@@ -2,7 +2,7 @@
 
 A public companion to the newsletter at [bharathk.dev](https://bharathk.dev). Reusable methodology artifacts for building with agentic coding tools, primarily Claude Code.
 
-I spent the last decade teaching distributed systems at Splunk, Elastic, and RSA. For the past eight months I've been building production AI systems using Claude Code as my primary collaborator. The methodology in this repo is what I've converged on through that work — not a framework, not a manifesto, just the patterns and templates I actually reach for every day. I'm still learning, and I expect this repo to keep changing as I do.
+This repo distills eight months of building with Claude Code into the patterns and templates I actually reach for every day
 
 ## What's in here
 
@@ -19,7 +19,7 @@ There's also a `methodology/` directory with a short standalone explainer of the
 
 Teachers, architects, and engineers who want a more deliberate way to work with agentic coding tools. People coming from non-traditional builder backgrounds — folks who think structurally about systems but haven't shipped production code in years, or ever. Anyone who has felt that working with Claude Code is powerful but slippery, and wants more rigor without giving up the speed.
 
-It is not for people looking for prompt tricks or productivity hacks. The methodology rewards investment up front and pays off over weeks, not minutes.
+The methodology rewards investment up front and pays off over weeks, not minutes.
 
 ## How to use it
 

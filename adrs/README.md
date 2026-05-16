@@ -1,6 +1,6 @@
 # Architecture Decision Records
 
-An Architecture Decision Record is a short document that captures one significant architectural choice: what was decided, what the context was, why this option won, and what we expect to live with as a consequence. The format is older than agentic coding — Michael Nygard wrote about it more than a decade ago — but it turns out to be unusually well-suited to working with LLMs.
+An Architecture Decision Record is a short document that captures one significant architectural choice: what was decided, what the context was, why this option won, and what we expect to live with as a consequence. The format is older than agentic coding — Michael Nygard wrote about it more than a decade ago in [Documenting Architecture Decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions) (2011) — but it turns out to be unusually well-suited to working with LLMs.
 
 ## Why I write them
 
