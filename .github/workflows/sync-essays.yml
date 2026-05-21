@@ -1,0 +1,38 @@
+name: Sync newsletter essays into README
+
+on:
+  schedule:
+    # 14:00 UTC every Tuesday. 9 AM EST in winter, 10 AM EDT in summer.
+    # Newsletter posts go live around 08:00 ET, so this always runs after.
+    - cron: '0 14 * * 2'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Sync README essays section
+        run: python3 scripts/sync_essays.py
+
+      - name: Open PR if README changed
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: Sync newsletter essays into README
+          title: Sync newsletter essays into README
+          body: |
+            Automated update from the Substack RSS feed at
+            https://whoisb.substack.com/feed.
+
+            Triggered by the weekly cron in `.github/workflows/sync-essays.yml`.
+          branch: chore/sync-essays
+          delete-branch: true
