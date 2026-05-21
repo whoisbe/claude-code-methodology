@@ -30,3 +30,10 @@ The templates are starting points, not gospel. I change mine when they stop fitt
 ## Newsletter
 
 The narrative context for these artifacts lives at [bharathk.dev](https://bharathk.dev). The essays explain why these patterns exist, where they came from, and where they have broken down for me. The repo is the toolkit; the newsletter is the story behind the tools.
+
+Published so far:
+
+<!-- ESSAYS:START -->
+- **2026-05-19** — [Macro and Micro](https://whoisb.substack.com/p/macro-and-micro-how-i-manage-my-context)
+- **2026-05-12** — [I Spent a Decade Teaching. Eight Months Ago I Started Building.](https://whoisb.substack.com/p/i-spent-a-decade-teaching-eight-months)
+<!-- ESSAYS:END -->

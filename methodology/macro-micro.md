@@ -1,6 +1,6 @@
 # Macro and Micro Contexts: A How-To
 
-The single architectural choice that has shaped every project I have built with Claude over the last eight months is the separation between a macro context and a micro context. This document is the mechanical version — when to use which, what artifacts pass between them, and how to keep them honest. The autobiographical version of how I arrived at this — and what it cost me before I did — is in the Week 2 essay at [bharathk.dev](https://bharathk.dev).
+The single architectural choice that has shaped every project I have built with Claude over the last eight months is the separation between a macro context and a micro context. This document is the mechanical version — when to use which, what artifacts pass between them, and how to keep them honest. The autobiographical version of how I arrived at this — and what it cost me before I did — is in [Macro and Micro](https://whoisb.substack.com/p/macro-and-micro-how-i-manage-my-context) on the newsletter.
 
 ## The flow at a glance
 
@@ -108,4 +108,4 @@ That's the whole mechanism. Two contexts, a handful of files between them, and t
 
 ---
 
-For the story of how I got here — the failed projects, the dead ends, what finally made the pattern click — see Week 2 at [bharathk.dev](https://bharathk.dev).
+For the story of how I got here — the failed projects, the dead ends, what finally made the pattern click — see [Macro and Micro](https://whoisb.substack.com/p/macro-and-micro-how-i-manage-my-context) on the newsletter.
